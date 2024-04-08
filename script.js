@@ -1,13 +1,13 @@
-const inputBox = document.getElementById("input-Box");
-const listContainer = document.getElementById("List-Container");
+const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container");
 
 function addToDoList () {
     if (inputBox.value === "") {
-        alert("Du musst was rein schreiben!");
-        
+        alert("Du musst was rein schreiben!");        
     } else {
         let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
+        li.textContent = inputBox.value;
         listContainer.appendChild(li);
+        inputBox.value = ""; // Réinitialiser l'input après l'ajout
     }
 }
