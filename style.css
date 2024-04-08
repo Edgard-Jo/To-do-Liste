@@ -66,11 +66,9 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
-
 button:hover {
   background: #326d11;
 }
-
 ul li {
   list-style: none;
   font-size: 17px;
