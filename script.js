@@ -11,4 +11,3 @@ function addToDoList () {
         listContainer.appendChild(li);
     }
 }
-
