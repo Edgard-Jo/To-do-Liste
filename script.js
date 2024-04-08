@@ -10,3 +10,4 @@ function addToDoList () {
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
     }
+}
