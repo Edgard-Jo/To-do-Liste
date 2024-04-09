@@ -53,3 +53,20 @@ listContainer.parentElement.addEventListener("click", function (e) {
     saveData();
   }
 });
+
+const currentTimeFooter = document.getElementById("current-time-footer");
+
+function updateCurrentTimeFooter() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+  currentTimeFooter.textContent = `Current Time: ${hours}:${minutes}:${seconds}`;
+}
+
+// Aktualisieren Sie die Uhrzeit alle Sekunde
+setInterval(updateCurrentTimeFooter, 1000);
+
+// Rufen Sie die Funktion einmal auf, um die Uhrzeit sofort anzuzeigen
+updateCurrentTimeFooter();
+
