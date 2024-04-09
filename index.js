@@ -10,18 +10,15 @@ function addToDoList() {
         const li = document.createElement("li");
         li.textContent = inputValue;
         
-        // Erstellen des Löschsymbols (X)
+        // Erstellen des Löschbuttons
         const deleteButton = document.createElement("span");
-        deleteButton.textContent = "❌"; // Hier kannst du auch ein Bild oder ein anderes Symbol verwenden
-        
-        // Füge dem Listenelement das Löschsymbol hinzu
-        li.appendChild(deleteButton);
-        
-        // Füge dem Löschsymbol einen Event-Listener hinzu
+        deleteButton.innerHTML = "&times;"; // Das 'x'-Symbol für den Löschbutton
+        deleteButton.className = "delete-btn";
         deleteButton.addEventListener("click", function() {
-            listContainer.removeChild(li); // Entferne das Listenelement beim Klicken auf das Löschsymbol
+            li.remove(); // Entfernen des li-Elements beim Klicken auf den Löschbutton
         });
         
+        li.appendChild(deleteButton); // Hinzufügen des Löschbuttons zum li-Element
         listContainer.appendChild(li);
         inputBox.value = "";
     }
