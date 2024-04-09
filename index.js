@@ -15,8 +15,10 @@ function addToDoList() {
     deleteButton.innerHTML = "&times;"; // Das 'x'-Symbol für den Löschbutton
     deleteButton.className = "delete-btn";
     deleteButton.addEventListener("click", function () {
-      li.remove(); // Entfernen des li-Elements beim Klicken auf den Löschbutton
-      saveData(); // Daten speichern, nachdem ein Element entfernt wurde
+      if (confirm("Möchtest du diesen Eintrag wirklich löschen?")) {
+        li.remove(); // Entfernen des li-Elements beim Klicken auf den Löschbutton
+        saveData(); // Daten speichern, nachdem ein Element entfernt wurde
+      }
     });
 
     li.appendChild(deleteButton); // Hinzufügen des Löschbuttons zum li-Element
@@ -27,12 +29,22 @@ function addToDoList() {
     inputBox.focus(); // put focus back to Inout box
   }
 }
-// Funktion zum Spreichern der Aufgabenliste im Localstorage
+
+// Funktion zum Speichern der Aufgabenliste im Localstorage
 function saveData() {
-
-    localStorage.setItem("toDoList", listContainer.innerHTML);
-
+  localStorage.setItem("toDoList", listContainer.innerHTML);
 }
+
+// Funktion zum Laden der Aufgabenliste aus dem Localstorage
+function loadData() {
+  const savedData = localStorage.getItem("toDoList");
+  if (savedData) {
+    listContainer.innerHTML = savedData;
+  }
+}
+
+// Laden der gespeicherten Daten beim Laden der Seite
+loadData();
 
 inputBox.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -42,15 +54,15 @@ inputBox.addEventListener("keydown", function (event) {
   }
 });
 
-
-
 listContainer.parentElement.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
     saveData();
   } else if (e.target.tagName === "SPAN") {
-    e.target.parentElement.remove();
-    saveData();
+    if (confirm("Möchtest du diesen Eintrag wirklich löschen?")) {
+      e.target.parentElement.remove();
+      saveData();
+    }
   }
 });
 
@@ -69,4 +81,3 @@ setInterval(updateCurrentTimeFooter, 1000);
 
 // Rufen Sie die Funktion einmal auf, um die Uhrzeit sofort anzuzeigen
 updateCurrentTimeFooter();
-
