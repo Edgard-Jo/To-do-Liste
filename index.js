@@ -21,6 +21,15 @@ function addToDoList() {
         li.appendChild(deleteButton); // Hinzufügen des Löschbuttons zum li-Element
         listContainer.appendChild(li);
         inputBox.value = ""; // Clear input box after adding task
+
+        inputBox.focus(); // put focus back to Inout box
     }
 }
 
+inputBox.addEventListener("keydown", function(event) {  
+   
+    if (event.key === "Enter") {   // Überprüfen, ob die gedrückte Taste die Enter-Taste ist 
+       // Aufrufen der addToDoList()-Funktion, wenn die Enter-Taste gedrückt wird
+        addToDoList();
+    }
+});
