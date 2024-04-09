@@ -66,9 +66,8 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
-button:hover { 
-  background : #326d11
-
+button:hover {
+  background: #326d11;
 }
 ul li {
   list-style: none;
@@ -104,4 +103,42 @@ ul li span:hover {
   cursor: pointer;
   font-size: 20px;
   color: #ff0000;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-image: url(https://cdn.iconscout.com/icon/free/png-256/free-checkbox-2652909-2202826.png);
+  background-size: cover;
+  background-position: center;
+  top: 8px;
+  left: 8px;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  background-image: url(https://www.svgrepo.com/show/309414/checkbox-checked.svg);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
