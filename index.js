@@ -16,14 +16,22 @@ function addToDoList() {
     deleteButton.className = "delete-btn";
     deleteButton.addEventListener("click", function () {
       li.remove(); // Entfernen des li-Elements beim Klicken auf den Löschbutton
+      saveData(); // Daten speichern, nachdem ein Element entfernt wurde
     });
 
     li.appendChild(deleteButton); // Hinzufügen des Löschbuttons zum li-Element
     listContainer.appendChild(li);
     inputBox.value = ""; // Clear input box after adding task
 
+    saveData(); // Daten speichern , nachdem ein Element hinzu wurde
     inputBox.focus(); // put focus back to Inout box
   }
+}
+// Funktion zum Spreichern der Aufgabenliste im Localstorage
+function saveData() {
+
+    localStorage.setItem("toDoList", listContainer.innerHTML);
+
 }
 
 inputBox.addEventListener("keydown", function (event) {
@@ -33,6 +41,8 @@ inputBox.addEventListener("keydown", function (event) {
     addToDoList();
   }
 });
+
+
 
 listContainer.parentElement.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
